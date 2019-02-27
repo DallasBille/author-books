@@ -1,0 +1,15 @@
+<h1><%=@book.name%> <%="(#{@book.pages} pages)"%></h1>
+    <h2>Authors:</h2>
+        <%@book.authors.each do |author|%>
+        <ul>
+            <li>
+                <%=link_to author.name, author_path(author)%><%=link_to "(b. #{author.birth_year})", author_path(author)%>
+            </li>
+        </ul>
+        <%end%>
+            <%=form_for @author_book do |f|%>
+            <%=f.hidden_field :@book%>
+            <%=f.label :author%>
+            <%=f.collection_select :author_id, @authors, :id, :name%>
+            <%=f.submit%>
+            <%end%>
