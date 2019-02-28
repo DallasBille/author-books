@@ -1,13 +1,11 @@
 <h1>New Author</h1>
-
+<ul>
     <%@author.errors.full_messages.each do |error|%>
-    <ul>
         <li>
             <%=error%>
         </li>
-    </ul>
     <%end%>
-
+</ul>
     <%= form_for @author do |f|%>
     <%=f.label :name%>
     <%=f.text_field :name%><br><br>
@@ -15,3 +13,5 @@
     <%=f.text_field :birth_year%><br><br>
     <%=f.submit%>
     <%end%>
+
+    

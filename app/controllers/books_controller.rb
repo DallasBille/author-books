@@ -5,8 +5,8 @@ class BooksController < ApplicationController
 
   def show
       get_book
-      @authors = Author.all
       @author_book = AuthorBook.new
+      @authors = Author.all
   end
 
   private

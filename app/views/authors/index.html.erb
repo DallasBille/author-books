@@ -1,12 +1,12 @@
 <h1>Authors!</h1>
     <p><%=link_to "New Author", new_author_path%></p><br>
+    <ul>
         <%@authors.each do |author|%>
-        <ul>
+
             <li>
                 <%=link_to author.name, author_path(author)%>
                 <%="(b.#{author.birth_year})"%>
 
             </li>
-        </ul>
-
         <%end%>
+    </ul>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
     resources :authors
     resources :books, only: [:index, :show]
-    resources :author_books, only: [:create]
+    resources :author_books, only: [:create, :destroy]
 
     # get 'books/index'
     # get 'books/show'

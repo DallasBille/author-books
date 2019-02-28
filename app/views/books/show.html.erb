@@ -1,16 +1,19 @@
 <h1><%=@book.name%> <%="(#{@book.pages} pages)"%></h1>
     <h2>Authors:</h2>
-        <%@book.authors.each do |author|%>
-        <ul>
+    <ul>
+        <%@book.author_books.each do |author_book|%>
             <li>
-                <%=link_to author.name, author_path(author)%><%=link_to "(b. #{author.birth_year})", author_path(author)%>
-            </li>
-        </ul>
-        <%end%>
 
-            <%=form_for @author_book do |f|%>
-            <%=f.label :author%>
-            <input type="hidden" name="author_book[book_id]" value=<%=@book.id%>><br>
-            <%=f.collection_select :author_id, @authors, :id, :name%>
-            <%=f.submit "Add Author"%>
-            <%end%>
+                <%=link_to author_book.author.name, author_path(author_book.author_id)%><%=link_to "(b. #{author_book.author.birth_year})", author_path(author_book.author_id)%>
+                <%=button_to "Remove Author", author_book, :method => "delete"%>
+            </li>
+
+        <%end%>
+    </ul>
+
+    <%=form_for @author_book do |f|%>
+    <%=f.label :author%>
+    <input type="hidden" name="author_book[book_id]" value=<%=@book.id%>><br>
+    <%=f.collection_select :author_id, @authors, :id, :name%>
+    <%=f.submit "Add Author"%>
+    <%end%>
